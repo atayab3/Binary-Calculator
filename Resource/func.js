@@ -76,16 +76,48 @@ function TwosComp( binaryArr, negBinary ){
 			negBinary.push(1);
 		}
 	}
-	alert(negBinary);
+	
 	if(negBinary[0] == 0){
 		negBinary.unshift(1);
 	}
-	if(negBinary[negBinary.length-1] == 0){
-		negBinary.pop();
-		negBinary.push(1);
+	alert("got here");
+	// ADDING 1 to the lowest bit
+	var carryOver = 0 ;
+	for(var i =  negBinary.length -1 ; i > 0; --i  ){
+		if(i == negBinary.length-1){
+		
+			if(negBinary[i] == 0 ){ // FIX ME 
+				negBinary.splice(i, 1, 1); // add index i, remove 1 element, and add a one
+				break;
+			}
+
+			else{//(negBinary[i] == 1 ) {
+				negBinary.splice(i, 1, 0);
+				carryOver = 1; 
+				continue; //carry over the one
+			}
+			
+		}
+		else{
+			if( carryOver == 1 && negBinary[i] == 0){
+				negBinary.splice(i, 1, 1); // add index i, remove 1 element, and add a one
+				carryOver = 0;
+				break;
+			}
+			else if (carryOver == 1 && negBinary[i] == 1){
+				negBinary.splice(i, 1, 0);
+				carryOver = 1;
+			}
+			
+		}
 	}
+
 	return negBinary;
 }
+
+// function normalizeArrOutput(binaryArr){
+	
+// }
 
 //Sign and Magnitude Representation of Negative Numbers
 function SignAndMag(){
