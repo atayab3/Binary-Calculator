@@ -1,0 +1,25 @@
+body{
+	background-color: #40739e;
+		
+}
+
+h5{
+	
+	margin-left: 15px;
+	font-size: 35px;
+	color: #f5f6fa;
+}
+	
+input{
+/* 	 margin: 25px 50px 75px 100px; */
+	font-family: "Times New Roman";
+	font-size: 20px;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+p{
+	margin-left: 15px;
+	font-size: 22px;
+	color: #2f3640;
+}
