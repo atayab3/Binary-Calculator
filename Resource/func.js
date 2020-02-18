@@ -17,11 +17,12 @@ function getInput(){
 	  var inputValNum = Number(inputVal);
 	
 	  if(inputValNum >= 0){ // Input value is positive
-		var binaryArr = posDecToBinary(inputValNum, binary);
+		var binaryArr = posDecToBinary(inputValNum, binary); //12
+		binaryArr = lengthenOutput(binaryArr);
 		console.log("Binary array: " + binaryArr);
 		// convert array into string that can be outputted  
 		var stringbinary = binaryArr.join("");
-		stringbinary = lengthenOutput(stringbinary);
+// 		stringbinary = lengthenOutput(stringbinary);
 		  
 		// Output what the decimal converted to Binary will be
 	    let p1 = document.createElement("p");
@@ -30,7 +31,8 @@ function getInput(){
 
 	  }
 	  else{ // The input value is negative
-		  var binaryArr = posDecToBinary(inputValNum*(-1), binary);
+		  var binaryArr = posDecToBinary(inputValNum*(-1), binary); // need to make negative input value a positive so multiply by -1 
+		  binaryArr = lengthenOutput(binaryArr);
 		  console.log("Twos comp binary array: " + binaryArr);
 		  
 		  //Twos Complement Binary Representation
@@ -83,7 +85,7 @@ function TwosComp( binaryArr, negBinary ){
 	if(negBinary[0] == 0){
 		negBinary.unshift(1);
 	}
-	alert("got here");
+// 	alert("got here");
 	// ADDING 1 to the lowest bit
 	var carryOver = 0 ;
 	for(var i =  negBinary.length -1 ; i > 0; --i  ){
@@ -118,29 +120,35 @@ function TwosComp( binaryArr, negBinary ){
 	return negBinary;
 }
 
-function lengthenOutput(binaryString){
+function lengthenOutput(binaryArr){
 	
-	var extraNum = binaryString.length % 4;
+	var extraNum = binaryArr.length % 4;
 	var extraString ; 
 	switch(extraNum){
 		case 1: 
-			extraString = "000";
+// 			extraString = "000";
+			binaryArr.unshift(0);
+			binaryArr.unshift(0);
+			binaryArr.unshift(0);
 			break;
 		case 2:
-			extraString = "00";
+// 			extraString = "00";
+			binaryArr.unshift(0);
+			binaryArr.unshift(0);
 			break;
 		case 3:
-			extraString = "0";
+// 			extraString = "0";
+			binaryArr.unshift(0);
 			break;
 		default:
-			extraString = "";
+// 			extraString = "";
 			break;
 	}
-	binaryString = extraString+binaryString;
+// 	binaryString = extraString+binaryString;
 	
 	
-	return binaryString;
-	
+// 	return binaryString;
+	return binaryArr;
 		
 		
 }
