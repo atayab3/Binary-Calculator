@@ -15,7 +15,9 @@ function getInput(){
       var inputVal = document.getElementById("decVal").value;
 	  //- Convert string to int
 	  var inputValNum = Number(inputVal);
-	
+	  if(inputVal == ""){
+		  return;
+	  }
 	  if(inputValNum >= 0){ // Input value is positive
 		var binaryArr = posDecToBinary(inputValNum, binary); //12
 		binaryArr = lengthenOutput(binaryArr);
@@ -43,7 +45,7 @@ function getInput(){
 // 		  negStringBinary = lengthenOutput(negStringBinary);
 		  
 		  let p2 = document.createElement("p");
-		  p2.textContent = inputVal + " is " + negStringBinary + " in Two's Complement";
+		  p2.textContent = inputVal + " is " + negStringBinary + " in Two's Complement binary";
 		  document.body.appendChild(p2);	
 	  }
 	  
