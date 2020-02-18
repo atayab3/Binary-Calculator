@@ -21,6 +21,7 @@ function getInput(){
 		console.log("Binary array: " + binaryArr);
 		// convert array into string that can be outputted  
 		var stringbinary = binaryArr.join("");
+		stringbinary = lengthenOutput(stringbinary);
 		  
 		// Output what the decimal converted to Binary will be
 	    let p1 = document.createElement("p");
@@ -37,6 +38,8 @@ function getInput(){
 		  
 		  // convert array into string  
 		  var negStringBinary = negBinaryArr.join("");
+// 		  negStringBinary = lengthenOutput(negStringBinary);
+		  
 		  let p2 = document.createElement("p");
 		  p2.textContent = inputVal + " is " + negStringBinary + " in Two's Complement";
 		  document.body.appendChild(p2);	
@@ -115,9 +118,32 @@ function TwosComp( binaryArr, negBinary ){
 	return negBinary;
 }
 
-// function normalizeArrOutput(binaryArr){
+function lengthenOutput(binaryString){
 	
-// }
+	var extraNum = binaryString.length % 4;
+	var extraString ; 
+	switch(extraNum){
+		case 1: 
+			extraString = "000";
+			break;
+		case 2:
+			extraString = "00";
+			break;
+		case 3:
+			extraString = "0";
+			break;
+		default:
+			extraString = "";
+			break;
+	}
+	binaryString = extraString+binaryString;
+	
+	
+	return binaryString;
+	
+		
+		
+}
 
 //Sign and Magnitude Representation of Negative Numbers
 function SignAndMag(){
