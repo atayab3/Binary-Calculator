@@ -143,10 +143,20 @@ function getInput2(){
 	  // Selecting the input element and get its value
 	  var decVal = 0; 
       var binVal = document.getElementById("binaryVal").value;
+// 	  alert("BIN " + binVal);
 	  var tempNum = 0; // so string can be converted to int
+      while( binVal.includes(" ") == true ){
+		  var spaceIndex = binVal.indexOf(" ");
+		  var firstHalf = binVal.substr(0, spaceIndex);
+		  var secondHalf = binVal.substr(spaceIndex+1);
+		  binVal = firstHalf + secondHalf;
+// 		  alert("BIN " + binVal);
+	  }
+		 
 	  for(var i = 0 ; i < binVal.length ; ++i){
 		   tempNum = Number(binVal.charAt(i) );
 		   //Add correct powers of 2 based on placement on 1s in binary string
+// 		   alert("adding: " + (tempNum * Math.pow(2, binVal.length-1-i)) + " to " + decVal);
 		   decVal = decVal + (tempNum * Math.pow(2, binVal.length-1-i) );
 	  }
 	alert(binVal + " is " + decVal + " in decimal form.");
