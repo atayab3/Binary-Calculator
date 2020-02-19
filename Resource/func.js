@@ -4,8 +4,8 @@
 // 														 ) ;
 
 document.getElementById("getDecBtn").addEventListener("click", getInput ) ;
-//global variables
 
+document.getElementById("getbinaryBtn").addEventListener("click", getInput2 ) ;
 
 function getInput(){ 
 	// have to reset these arrays every time a different input is retrieved
@@ -48,10 +48,6 @@ function getInput(){
 		  p2.textContent = inputVal + " is " + negStringBinary + " in Two's Complement binary";
 		  document.body.appendChild(p2);	
 	  }
-	  
-	
-		
-
 	
 }
 
@@ -71,10 +67,8 @@ function posDecToBinary(decValue, binary) {
   return binary;
 }
 
-
 //Two's Complement Representation of Negative Numbers
-function TwosComp( binaryArr, negBinary ){
-	 
+function TwosComp(binaryArr, negBinary){
 	for(var i = 0 ; i < binaryArr.length ;  ++i ){
 		if(binaryArr[i] == 1){
 			negBinary.push(0); 
@@ -87,23 +81,19 @@ function TwosComp( binaryArr, negBinary ){
 	if(negBinary[0] == 0){
 		negBinary.unshift(1);
 	}
-// 	alert("got here");
 	// ADDING 1 to the lowest bit
 	var carryOver = 0 ;
 	for(var i =  negBinary.length -1 ; i > 0; --i  ){
 		if(i == negBinary.length-1){
-		
 			if(negBinary[i] == 0 ){ // FIX ME 
 				negBinary.splice(i, 1, 1); // add index i, remove 1 element, and add a one
 				break;
 			}
-
 			else{//(negBinary[i] == 1 ) {
 				negBinary.splice(i, 1, 0);
 				carryOver = 1; 
 				continue; //carry over the one
 			}
-			
 		}
 		else{
 			if( carryOver == 1 && negBinary[i] == 0){
@@ -115,47 +105,55 @@ function TwosComp( binaryArr, negBinary ){
 				negBinary.splice(i, 1, 0);
 				carryOver = 1;
 			}
-			
 		}
 	}
-
 	return negBinary;
 }
 
+// if length of binary string is not a multiple of 4, add correct number of 0s needed to get there
 function lengthenOutput(binaryArr){
-	
 	var extraNum = binaryArr.length % 4;
 	var extraString ; 
 	switch(extraNum){
 		case 1: 
-// 			extraString = "000";
 			binaryArr.unshift(0);
 			binaryArr.unshift(0);
 			binaryArr.unshift(0);
 			break;
 		case 2:
-// 			extraString = "00";
 			binaryArr.unshift(0);
 			binaryArr.unshift(0);
 			break;
 		case 3:
-// 			extraString = "0";
 			binaryArr.unshift(0);
 			break;
 		default:
-// 			extraString = "";
 			break;
-	}
-// 	binaryString = extraString+binaryString;
-	
-	
-// 	return binaryString;
-	return binaryArr;
-		
-		
+	}	
+	return binaryArr;	
 }
 
 //Sign and Magnitude Representation of Negative Numbers
-function SignAndMag(){
+// function SignAndMag(){
 	
+// }
+
+// Used for binary to decimal conversions
+function getInput2(){
+	  // Selecting the input element and get its value
+	  var decVal = 0; 
+      var binVal = document.getElementById("binaryVal").value;
+	  var tempNum = 0; // so string can be converted to int
+	  for(var i = 0 ; i < binVal.length ; ++i){
+		   tempNum = Number(binVal.charAt(i) );
+		   //Add correct powers of 2 based on placement on 1s in binary string
+		   decVal = decVal + (tempNum * Math.pow(2, binVal.length-1-i) );
+	  }
+	alert(binVal + " is " + decVal + " in decimal form.");
+	return decVal;
+	
+	//FIX ME : 
+	let p3 = document.createElement("p");
+	p3.textContent = binVal + " is " + decVal + " in decimal form.";
+	document.body.appendChild(p3);
 }
