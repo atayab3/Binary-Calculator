@@ -2,6 +2,7 @@
 // 														  () => 
 // 														  {posDecToBinary(decValue)}
 // 														 ) ;
+// 	<!--TESTING GIT HUB	 -->
 
 // Positive or Negative Decimal Number to Binary Number
 document.getElementById("getDecBtn").addEventListener("click", getDecInput ) ;
