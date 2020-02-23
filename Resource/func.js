@@ -12,6 +12,8 @@ document.getElementById("getbinaryBtn").addEventListener("click", getBinInput ) 
 
 document.getElementById("getTwosCompBtn").addEventListener("click", getTwosCompInput ) ;
 
+
+
 function spaceRemover(binaryVal){
 	//accounting for spaces in input with includes function
 	while( binaryVal.includes(" ") == true ){
@@ -24,9 +26,10 @@ function spaceRemover(binaryVal){
 }
 
 function getTwosCompInput(){
-	var TCVal = document.getElementById("TwosCompVal").value;
+// 	var TCVal = document.getElementById("TwosCompVal").value;
+		var TCVal = document.getElementById("binaryVal").value;
+
 	// Selecting the input element and get its value
-	
 	var decVal = 0; 
 	var tempNum = 0; // so string can be converted to int
 
