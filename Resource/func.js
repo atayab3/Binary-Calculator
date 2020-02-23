@@ -5,14 +5,35 @@
 // 	<!--TESTING GIT HUB	 -->
 
 // Positive or Negative Decimal Number to Binary Number
-document.getElementById("getDecBtn").addEventListener("click", getDecInput ) ;
+document.getElementById("getDecBtn").addEventListener("click", convertDecimaltoBinary ) ;
 
 //Positive Binary Representation in Decimal Form
-document.getElementById("getbinaryBtn").addEventListener("click", getBinInput ) ;
+document.getElementById("getbinaryBtn").addEventListener("click", convertPosBinToDecimal ) ;
 
-document.getElementById("getTwosCompBtn").addEventListener("click", getTwosCompInput ) ;
+document.getElementById("getTwosCompBtn").addEventListener("click", convertTwosComptoDecimal ) ;
 
-
+// if length of binary string is not a multiple of 4, add correct number of 0s needed to get there
+function lengthenOutput(binaryArr){
+	var extraNum = binaryArr.length % 4;
+	var extraString ; 
+	switch(extraNum){
+		case 1: 
+			binaryArr.unshift(0);
+			binaryArr.unshift(0);
+			binaryArr.unshift(0);
+			break;
+		case 2:
+			binaryArr.unshift(0);
+			binaryArr.unshift(0);
+			break;
+		case 3:
+			binaryArr.unshift(0);
+			break;
+		default:
+			break;
+	}	
+	return binaryArr;	
+}
 
 function spaceRemover(binaryVal){
 	//accounting for spaces in input with includes function
@@ -25,39 +46,9 @@ function spaceRemover(binaryVal){
 	return binaryVal;
 }
 
-function getTwosCompInput(){
-// 	var TCVal = document.getElementById("TwosCompVal").value;
-		var TCVal = document.getElementById("binaryVal").value;
 
-	// Selecting the input element and get its value
-	var decVal = 0; 
-	var tempNum = 0; // so string can be converted to int
-
-	// remove all spaces from user input
-	TCVal = spaceRemover(TCVal);
-		
-	//traverse through - Adding correct powers of 2 based on placement on 1s in binary string
-	for(var i = 0 ; i < TCVal.length ; ++i){
-		//convert char to an integer value
-		tempNum = Number(TCVal.charAt(i) );
-		   
-		//first index should be multiplied by -1 
-		if(i ==0 ){
-			decVal = decVal + (tempNum * Math.pow(2, TCVal.length-1-i) *(-1) );
-		}
-		else{
-			decVal = decVal + (tempNum * Math.pow(2, TCVal.length-1-i) );
-		}
-	}
-	
-	//Create paragraph element containing the conversion to 
-	let p3 = document.createElement("p");
-	p3.textContent = "Twos comp: " + TCVal + " is " + decVal + " in decimal form.";
-	document.body.appendChild(p3);
-	return decVal; 
-}
-
-function getDecInput(){ 
+// gets decimal value, calls corresponding conversion function depending on positive or negative
+function convertDecimaltoBinary(){ 
 	// have to reset these arrays every time a different input is retrieved
 	var binary = []; 
 	var negBinary = [];
@@ -70,7 +61,9 @@ function getDecInput(){
 	if(inputVal == ""){
 		return;
 	}
-	if(inputValNum >= 0){ // Input value is positive
+	
+	// Inputted DECIMAL value is positive
+	if(inputValNum >= 0){ 
 		var binaryArr = posDecToBinary(inputValNum, binary); //12
 		binaryArr = lengthenOutput(binaryArr);
 		console.log("Binary array: " + binaryArr);
@@ -84,14 +77,15 @@ function getDecInput(){
 		document.body.appendChild(p1);
 
 	  }
-	  else{ // The input value is negative
-		  
+	
+	  // The inputted DECIMAL value is negative
+	  else{ 
 		  // convert the positive version of the neg input to binary	  
 		  var binaryArr = posDecToBinary(inputValNum*(-1), binary); // need to make negative input value a positive so multiply by -1 
 		  binaryArr = lengthenOutput(binaryArr);
 		  
 		  //Twos Complement Binary Representation
-		  var negBinaryArr = TwosComp(binaryArr, negBinary);
+		  var negBinaryArr = negDecToBinary(binaryArr, negBinary);
 		  
 		  // convert array into string  
 		  var negStringBinary = negBinaryArr.join("");
@@ -120,7 +114,7 @@ function posDecToBinary(decValue, binary) {
 }
 
 //Two's Complement Representation of Negative Numbers
-function TwosComp(binaryArr, negBinary){
+function negDecToBinary(binaryArr, negBinary){
 	
 	//Flipping bits of user inputted number ALREADY in positive binary
 	for(var i = 0 ; i < binaryArr.length ;  ++i ){
@@ -164,28 +158,7 @@ function TwosComp(binaryArr, negBinary){
 	return negBinary;
 }
 
-// if length of binary string is not a multiple of 4, add correct number of 0s needed to get there
-function lengthenOutput(binaryArr){
-	var extraNum = binaryArr.length % 4;
-	var extraString ; 
-	switch(extraNum){
-		case 1: 
-			binaryArr.unshift(0);
-			binaryArr.unshift(0);
-			binaryArr.unshift(0);
-			break;
-		case 2:
-			binaryArr.unshift(0);
-			binaryArr.unshift(0);
-			break;
-		case 3:
-			binaryArr.unshift(0);
-			break;
-		default:
-			break;
-	}	
-	return binaryArr;	
-}
+
 
 //Sign and Magnitude Representation of Negative Numbers
 // function SignAndMag(){
@@ -193,7 +166,7 @@ function lengthenOutput(binaryArr){
 // }
 
 // Used for POSITIVE binary to decimal conversions
-function getBinInput(){
+function convertPosBinToDecimal(){
 	// Selecting the input element and get its value
 	var decVal = 0; 
     var binVal = document.getElementById("binaryVal").value;
@@ -214,6 +187,40 @@ function getBinInput(){
 	//Create paragraph element containing the conversion to 
 	let p3 = document.createElement("p");
 	p3.textContent = binVal + " is " + decVal + " in decimal form.";
+	document.body.appendChild(p3);
+	return decVal; 
+}
+
+
+//Used for Twos Complemenmt conversion of binary to decimal
+function convertTwosComptoDecimal(){
+// 	var TCVal = document.getElementById("TwosCompVal").value;
+	var TCVal = document.getElementById("binaryVal").value;
+
+	// Selecting the input element and get its value
+	var decVal = 0; 
+	var tempNum = 0; // so string can be converted to int
+
+	// remove all spaces from user input
+	TCVal = spaceRemover(TCVal);
+		
+	//traverse through - Adding correct powers of 2 based on placement on 1s in binary string
+	for(var i = 0 ; i < TCVal.length ; ++i){
+		//convert char to an integer value
+		tempNum = Number(TCVal.charAt(i) );
+		   
+		//first index should be multiplied by -1 
+		if(i ==0 ){
+			decVal = decVal + (tempNum * Math.pow(2, TCVal.length-1-i) *(-1) );
+		}
+		else{
+			decVal = decVal + (tempNum * Math.pow(2, TCVal.length-1-i) );
+		}
+	}
+	
+	//Create paragraph element containing the conversion to 
+	let p3 = document.createElement("p");
+	p3.textContent = "Twos comp: " + TCVal + " is " + decVal + " in decimal form.";
 	document.body.appendChild(p3);
 	return decVal; 
 }
