@@ -1,13 +1,14 @@
 body{
-	background-color: #40739e;
-		
+/* 	background-color: #78e08f; */
+	background-color:#F8EFBA;	
+/* background-color:#F97F51; */
 }
 
 h5{
-	
-	margin-left: 15px;
-	font-size: 35px;
-	color: #f5f6fa;
+	margin-left: 65px;
+	font-size: 28px;
+/* 	color: #2C3A47; */
+	color:#2C3A47;
 }
 	
 input{
@@ -16,14 +17,31 @@ input{
 	font-size: 20px;
 	margin-top: 10px;
 	margin-left: 15px;
+/* 	font-style: Lacquer; */
 }
 
 p{
+/* 	font-family: "Anton"; */
+	font-family: "Righteous";
+	text-align: center;
 	margin-left: 15px;
-	font-size: 22px;
+	font-size: 21px;
 	color: #2f3640;
 }
-
+input{
+	margin-left: 65px;
+	
+}
+/* input#decVal,#binaryVal,#TwosCompVal{
+	height: 40px;
+	margin-left: 65px;
+}
+input#getTwosCompBtn {
+margin-left: 45px;	
+} */
+/* input{
+	margin-left: 65px;
+} */
 /* btn-group{
 	margin-left: -5px;
 	

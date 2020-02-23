@@ -3,11 +3,53 @@
 // 														  {posDecToBinary(decValue)}
 // 														 ) ;
 
-document.getElementById("getDecBtn").addEventListener("click", getInput ) ;
+// Positive or Negative Decimal Number to Binary Number
+document.getElementById("getDecBtn").addEventListener("click", getDecInput ) ;
 
-document.getElementById("getbinaryBtn").addEventListener("click", getInput2 ) ;
+//Positive Binary Representation in Decimal Form
+document.getElementById("getbinaryBtn").addEventListener("click", getBinInput ) ;
 
-function getInput(){ 
+document.getElementById("getTwosCompBtn").addEventListener("click", getTwosCompInput ) ;
+function spaceRemover(binaryVal){
+	//accounting for spaces in input with includes function
+	while( binaryVal.includes(" ") == true ){
+		  var spaceIndex = binaryVal.indexOf(" ");
+		  var firstHalf = binaryVal.substr(0, spaceIndex);
+		  var secondHalf = binaryVal.substr(spaceIndex+1);
+		  binaryVal = firstHalf + secondHalf;
+	  }
+	return binaryVal;
+}
+
+function getTwosCompInput(){
+	var TCVal = document.getElementById("TwosCompVal").value;
+	  // Selecting the input element and get its value
+	  var decVal = 0; 
+	  var tempNum = 0; // so string can be converted to int
+
+	// remove all spaces from user input
+	TCVal = spaceRemover(TCVal);
+		
+		//traverse through
+	  for(var i = 0 ; i < TCVal.length ; ++i){
+		   tempNum = Number(TCVal.charAt(i) );
+		   //Add correct powers of 2 based on placement on 1s in binary string
+		   if(i ==0 ){
+			   decVal = decVal + (tempNum * Math.pow(2, TCVal.length-1-i) *(-1) );
+		   }
+		   else{
+			   decVal = decVal + (tempNum * Math.pow(2, TCVal.length-1-i) );
+		   }
+	  }
+	
+// 	Create paragraph element containing the conversion to 
+	let p3 = document.createElement("p");
+	p3.textContent = "Twos comp: " + TCVal + " is " + decVal + " in decimal form.";
+	document.body.appendChild(p3);
+	return decVal; 
+}
+
+function getDecInput(){ 
 	// have to reset these arrays every time a different input is retrieved
 	var binary = []; 
 	var negBinary = [];
@@ -69,6 +111,8 @@ function posDecToBinary(decValue, binary) {
 
 //Two's Complement Representation of Negative Numbers
 function TwosComp(binaryArr, negBinary){
+	
+	//Flipping bits of user inputted number ALREADY in positive binary
 	for(var i = 0 ; i < binaryArr.length ;  ++i ){
 		if(binaryArr[i] == 1){
 			negBinary.push(0); 
@@ -85,11 +129,11 @@ function TwosComp(binaryArr, negBinary){
 	var carryOver = 0 ;
 	for(var i =  negBinary.length -1 ; i > 0; --i  ){
 		if(i == negBinary.length-1){
-			if(negBinary[i] == 0 ){ // FIX ME 
+			if(negBinary[i] == 0 ){  
 				negBinary.splice(i, 1, 1); // add index i, remove 1 element, and add a one
 				break;
 			}
-			else{//(negBinary[i] == 1 ) {
+			else{
 				negBinary.splice(i, 1, 0);
 				carryOver = 1; 
 				continue; //carry over the one
@@ -138,32 +182,27 @@ function lengthenOutput(binaryArr){
 	
 // }
 
-// Used for binary to decimal conversions
-function getInput2(){
+// Used for POSITIVE binary to decimal conversions
+function getBinInput(){
 	  // Selecting the input element and get its value
 	  var decVal = 0; 
       var binVal = document.getElementById("binaryVal").value;
-// 	  alert("BIN " + binVal);
+	
 	  var tempNum = 0; // so string can be converted to int
-      while( binVal.includes(" ") == true ){
-		  var spaceIndex = binVal.indexOf(" ");
-		  var firstHalf = binVal.substr(0, spaceIndex);
-		  var secondHalf = binVal.substr(spaceIndex+1);
-		  binVal = firstHalf + secondHalf;
-// 		  alert("BIN " + binVal);
-	  }
-		 
+	
+		// remove all spaces from user input
+		binVal = spaceRemover(binVal);
+		
+		//traverse through
 	  for(var i = 0 ; i < binVal.length ; ++i){
 		   tempNum = Number(binVal.charAt(i) );
 		   //Add correct powers of 2 based on placement on 1s in binary string
-// 		   alert("adding: " + (tempNum * Math.pow(2, binVal.length-1-i)) + " to " + decVal);
 		   decVal = decVal + (tempNum * Math.pow(2, binVal.length-1-i) );
 	  }
-	alert(binVal + " is " + decVal + " in decimal form.");
-	return decVal;
 	
-	//FIX ME : 
+// 	Create paragraph element containing the conversion to 
 	let p3 = document.createElement("p");
 	p3.textContent = binVal + " is " + decVal + " in decimal form.";
 	document.body.appendChild(p3);
+	return decVal; 
 }
