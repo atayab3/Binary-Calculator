@@ -11,6 +11,23 @@ document.getElementById("getDecBtn").addEventListener("click", convertDecimaltoB
 document.getElementById("getbinaryBtn").addEventListener("click", convertPosBinToDecimal ) ;
 
 document.getElementById("getTwosCompBtn").addEventListener("click", convertTwosComptoDecimal ) ;
+//check validity of input
+function validityCheck(inputVal){
+	// if either if statment returns TRUE - input from user is not valid
+	if(inputVal == ""){
+		let p1 = document.createElement("p");
+		p1.textContent = "Please enter a value.";
+		document.body.appendChild(p1);
+		return true; 
+	}
+// 	if(inputVal.includes("[a-zA-Z]+")) { 
+// 		let p1 = document.createElement("p");
+// 		p1.textContent = "Please enter a valid value.";
+// 		document.body.appendChild(p1);
+// 		return true; 
+// 	  }
+}
+
 
 // if length of binary string is not a multiple of 4, add correct number of 0s needed to get there
 function lengthenOutput(binaryArr){
@@ -55,12 +72,12 @@ function convertDecimaltoBinary(){
 	  
 	// Selecting the input element and get its value   
 	var inputVal = document.getElementById("decVal").value;
-	
-	// Convert string to int
-	var inputValNum = Number(inputVal);
-	if(inputVal == ""){
+	if(validityCheck(inputVal)){
 		return;
 	}
+	// Convert string to int
+	var inputValNum = Number(inputVal);
+	
 	
 	// Inputted DECIMAL value is positive
 	if(inputValNum >= 0){ 
@@ -160,17 +177,14 @@ function negDecToBinary(binaryArr, negBinary){
 
 
 
-//Sign and Magnitude Representation of Negative Numbers
-// function SignAndMag(){
-	
-// }
-
 // Used for POSITIVE binary to decimal conversions
 function convertPosBinToDecimal(){
 	// Selecting the input element and get its value
 	var decVal = 0; 
     var binVal = document.getElementById("binaryVal").value;
-	
+	if(validityCheck(binVal)){
+		return;
+	}
 	var tempNum = 0; // so string can be converted to int
 	
 	// remove all spaces from user input
@@ -196,7 +210,9 @@ function convertPosBinToDecimal(){
 function convertTwosComptoDecimal(){
 // 	var TCVal = document.getElementById("TwosCompVal").value;
 	var TCVal = document.getElementById("binaryVal").value;
-
+	if(validityCheck(TCVal)){
+		return;
+	}
 	// Selecting the input element and get its value
 	var decVal = 0; 
 	var tempNum = 0; // so string can be converted to int

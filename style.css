@@ -1,5 +1,3 @@
-/* 	<!--TESTING GIT HUB	 --> */
-
 body{
 /* 	background-color:#F8EFBA;	 */
 background-color:#78e08f;
@@ -39,14 +37,3 @@ input{
 input#getDecBtn,#getbinaryBtn,#getTwosCompBtn {
 	color: #182C61;
 }
-/*
-input#getTwosCompBtn {
-margin-left: 45px;	
-} */
-/* input{
-	margin-left: 65px;
-} */
-/* btn-group{
-	margin-left: -5px;
-	
-} */
