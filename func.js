@@ -91,7 +91,7 @@ function convertDecimaltoBinary(){
 		// Output what the decimal converted to Binary will be
 	    let p1 = document.createElement("p");
 		p1.textContent = "+" + inputVal + " is " + stringbinary + " in binary.";
-		document.body.appendChild(p1);
+		document.getElementById("addValuesHere").appendChild(p1);
 
 	  }
 	
@@ -109,7 +109,7 @@ function convertDecimaltoBinary(){
 		  
 		  let p2 = document.createElement("p");
 		  p2.textContent = inputVal + " is " + negStringBinary + " in Two's Complement binary";
-		  document.body.appendChild(p2);	
+		  document.getElementById("addValuesHere").appendChild(p2);	
 	  }
 	
 }
