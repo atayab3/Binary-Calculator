@@ -1,80 +1,69 @@
 <!DOCTYPE html>
-
-<html >
+<html>
 <head>
-	<!--TESTING GIT HUB--	 -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<link href="style.css" rel="stylesheet" type="text/css">
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css">
 
 <!-- Adding GOOGLE Fonts 	 -->
 	<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Titillium Web|Anton | Righteous"
+          href="https://fonts.googleapis.com/css?family=Righteous|Inconsolata "
 				>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">		
 		
 </head>
 <body>	
 	
-	<br>
-	<div id="myCred">
-		<p>Adam Tayabali - Feb. 2020</p>
+
+	
+	<div id="firstBox">
+		<h5>Decimal to Binary Conversion</h5>
+
+		<label class="mdc-text-field mdc-text-field--filled">
+		  <span class="mdc-text-field__ripple"></span>
+		  <input  id="decVal" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+		  <span class="mdc-floating-label" id="my-label-id"></span>
+		  <span class="mdc-line-ripple"></span>
+		</label>
+		<br>
+		<button id="getDecBtn" class="mdc-button--raised">
+		  <span class="mdc-button__label">In Binary</span>
+		</button>
 		
-	</div>
-	<br>
-<div class="row">
-<!-- <div class="col-md-1"></div> -->
-	<div class="col-md-8">
-		<h5>Decimal to Binary Conversion:</h5>
-	</div> 
-</div>
-<!-- <form>	 -->
-<div class="row">
-	<div class="col-md-8">
-		<input id="decVal"  class="form-control form-control-lg" type="text" placeholder="eg 65 gets 0100 0001">
-	</div>
-	<div class="col-md-4">
-		<input id="getDecBtn" type="submit" value="Convert It!">
-	</div>
-</div>
-	
-	
-<div id="addValuesHere">
-</div>
-
-	
-	<br>
-	
-<div class="row">
-	<div class="col-md-8">
-		<h5>Binary to Decimal Conversion:</h5>
-	</div> 
-</div>
-	
-<div class="row">
-	<div class="col-md-8">
-		<input id="binaryVal"  class="form-control form-control-lg" type="text" placeholder="eg 1000 1010 gets +138 or -118 ">
+		<div id="addValuesHere">
+			<p>eg 65 gets 0100 0001</p>	
+		</div>
 	</div>
 	
-	<div class="col-md-4">
-		<input id="getbinaryBtn" type="submit" value="Convert to + Decimal!">
-		<input id="getTwosCompBtn" type="submit" value="Twos Complement Conversion!">
+
+	<div id="secondBox">
+		<h5>Binary to Decimal Conversion</h5>
+
+		<label class="mdc-text-field mdc-text-field--filled">
+		  <span class="mdc-text-field__ripple"></span>
+		  <input  id="binaryVal"  class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+		  <span class="mdc-floating-label" id="my-label-id"></span>
+		  <span class="mdc-line-ripple"></span>
+		</label>
+		<br>
+	
+		<button id="getbinaryBtn" class="mdc-button--raised">
+		  <span class="mdc-button__label"> In Decimal</span>
+		</button>
+	
+		<button id="getTwosCompBtn" class="mdc-button--raised">
+		  <span class="mdc-button__label"> Twos Comp</span>
+		</button>
+	
+		<div id="addValuesHere2">
+			<p>eg 1000 1010 gets +138 or -118</p>
+		</div>
 	</div>
-	
-</div>
-	
-	<br>
 
 	
+
 	
-<script src = "func.js" >
+<script src = "func.js" ></script>
 
-</script>
-
-
-</body>
-	
+</body>	
 </html>
