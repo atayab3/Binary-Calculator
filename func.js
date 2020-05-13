@@ -1,4 +1,5 @@
-// Positive or Negative Decimal Number to Binary Number
+
+// // Positive or Negative Decimal Number to Binary Number
 document.getElementById("getDecBtn").addEventListener("click", convertDecimaltoBinary ) ;
 
 //Positive Binary Representation in Decimal Form
@@ -234,3 +235,5 @@ function convertTwosComptoDecimal(){
 	document.getElementById("addValuesHere2").appendChild(p3);
 	return decVal; 
 }
+
+//Code by Adam Tayabali
