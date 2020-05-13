@@ -1,39 +1,66 @@
 body{
-/* 	background-color:#F8EFBA;	 */
-background-color:#78e08f;
+	background-color:#dcdde1;
 }
 
 h5{
-	margin-left: 65px;
-	font-size: 28px;
-/* 	color: #2C3A47; */
-	color:#182C61;
-}
-	
-input{
-/* 	 margin: 25px 50px 75px 100px; */
-	font-family: "Times New Roman";
 	font-size: 20px;
-	margin-top: 10px;
-	margin-left: 15px;
-/* 	font-style: Lacquer; */
+	font-style: bold;
+	color: #182C61;
+	font-family: "Inconsolata";
+}
+p{
+	font-size: 15px;
+	font-family: "Righteous";
+}
+.mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disabled){
+/* 	margin-left: 65px; */
+	color: #f5f6fa;
+	background-color: #05386B;
+	font-size: 16px;
+	margin-top: 10px; 
+	margin-left: 12px;
+	margin-right: 12px;
+	text-align: center;
+	font-family: "Righteous";
+
+}
+label{
+	margin-top: -15px;
+	margin-bottom: 5px;
+	font-size: 20px;
 }
 
-p{
-/* 	font-family: "Anton"; */
-	font-family: "Righteous";
-	text-align: center;
-	margin-left: 15px;
-	font-size: 21px;
-	color: #2f3640;
+#firstBox{
+	text-align: center; 
+	position: fixed;  
+	top: 40%;
+    left: 30%;
+  	transform: translate(-50%, -50%); 
 }
-input{
-	margin-left: 65px;
+#secondBox{
+	text-align: center; 
+	position: fixed;  
+	top: 40%;
+    left: 70%;
+  	transform: translate(-50%, -50%); 
+}
+
+
+/*  for the phone */
+@media only screen and (max-width: 400px) {
+	#firstBox{
+	text-align: center; 
+	position: fixed;  
+	top: 25%;
+    left: 50%;
+  	transform: translate(-50%, -50%); 
+	}
+#secondBox{
+	text-align: center; 
+	position: fixed;  
+	top: 65%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
 	
-}
- input#decVal,#binaryVal,#TwosCompVal{
-	height: 36px;
-}
-input#getDecBtn,#getbinaryBtn,#getTwosCompBtn {
-	color: #182C61;
+	}
 }
