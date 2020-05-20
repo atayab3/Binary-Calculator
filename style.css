@@ -3,20 +3,27 @@ body{
 }
 
 h5{
-	font-size: 20px;
+	font-size: 40px;
 	font-style: bold;
+	
 	color: #182C61;
 	font-family: "Inconsolata";
 }
 p{
-	font-size: 15px;
+	font-size: 20px;
+	letter-spacing: 3px;
 	font-family: "Righteous";
+}
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: rgba(0,0,0,.87);
+	width: 320px;
 }
 .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disabled){
 /* 	margin-left: 65px; */
 	color: #f5f6fa;
 	background-color: #05386B;
-	font-size: 16px;
+	font-size: 20px;
+	letter-spacing: 3px;
 	margin-top: 10px; 
 	margin-left: 12px;
 	margin-right: 12px;
@@ -31,37 +38,93 @@ label{
 }
 
 #firstBox{
+	display: block;
 	text-align: center; 
 	position: fixed;  
-	top: 40%;
-    left: 30%;
+	top: 50%;
+    left: 50%;
   	transform: translate(-50%, -50%); 
 }
 #secondBox{
+	display: none;
 	text-align: center; 
 	position: fixed;  
-	top: 40%;
-    left: 70%;
+	top: 50%;  
+    left: 50%;
   	transform: translate(-50%, -50%); 
+	margin-bottom: 2px;
 }
 
+#responsiveButtons{
+	margin-top: 35px;
+	display: block;
+	text-align: center;
+}
+#chooseBinary{  
+	text-align: center;
+	background-color: white;
+	color: #05386B;
+	font-size: 25px;
+	}
+	#chooseDecimal{
+		text-align: center;
+	background-color: white;
+	color: #05386B;
+	font-size: 25px;
+	}
 
 /*  for the phone */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 700px) {
+	#responsiveButtons{
+		display: block;
+	}
+	.mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disabled){
+		font-size: 18px;
+	}
+	#chooseBinary{  
+	background-color: white;
+	color: #05386B;
+	font-size: 25px;
+	}
+	#chooseDecimal{
+	background-color: white;
+	color: #05386B;
+	font-size: 25px;
+	}
+	.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: rgba(0,0,0,.87);
+	width: 210px;
+	}	
+	h5{
+		font-size: 32px;
+	}
 	#firstBox{
+/* 	display: block; */
 	text-align: center; 
 	position: fixed;  
-	top: 25%;
+	top: 50%;
     left: 50%;
   	transform: translate(-50%, -50%); 
 	}
-#secondBox{
+	#secondBox{
+/* 	display: none; */
 	text-align: center; 
 	position: fixed;  
-	top: 65%;
+	top: 50%;
     left: 50%;
   	transform: translate(-50%, -50%);
 	
 	}
+}
+@media only screen and (min-width: 700px) {
+	#responsiveButtons{
+		display: block;
+	}
+	#firstBox{
+		display: block;
+	}
+	#secondBox{
+		display: none;}
+	
 }
 /*  Code by Adam Tayabali*/
