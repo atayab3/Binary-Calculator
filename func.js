@@ -6,6 +6,19 @@ document.getElementById("getDecBtn").addEventListener("click", convertDecimaltoB
 document.getElementById("getbinaryBtn").addEventListener("click", convertPosBinToDecimal ) ;
 
 document.getElementById("getTwosCompBtn").addEventListener("click", convertTwosComptoDecimal ) ;
+
+
+document.getElementById("chooseBinary").addEventListener("click", (e)=>{
+							document.getElementById("firstBox").style.display = "block"; 						
+							document.getElementById("secondBox").style.display = "none"; 		
+}
+							);
+
+document.getElementById("chooseDecimal").addEventListener("click", (e)=>{
+							document.getElementById("firstBox").style.display = "none"; 						
+							document.getElementById("secondBox").style.display = "block"; 
+	}
+							);
 //check validity of input
 function validityCheck(inputVal){
 	// if either if statment returns TRUE - input from user is not valid
