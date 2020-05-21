@@ -249,4 +249,4 @@ function convertTwosComptoDecimal(){
 	return decVal; 
 }
 
-//Code by Adam Tayabali
+//Code by Adam Tayabali 
